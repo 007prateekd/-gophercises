@@ -8,6 +8,6 @@ Using `./quiz-game -h`, we get all the flags:
 - limit: Time limit in seconds (default 30)
 - shuffle: Whether to shuffle the quiz or not
 
-For example, we can use  
-`./quiz-game -csv="problems.csv" -limit=20 -shuffle`  
-to run the quiz on _problems.csv_ with a time limit of _25 seconds_ and _shuffled_ questions.
+## Example 
+
+`./quiz -csv="problems.csv" -limit=20 -shuffle` to run the quiz on _problems.csv_ with a time limit of _25 seconds_ and _shuffled_ questions.

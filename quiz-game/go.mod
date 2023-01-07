@@ -1,3 +1,3 @@
-module quiz-game
+module quiz
 
 go 1.18
