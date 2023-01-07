@@ -13,4 +13,4 @@ Using `go run cmd/web/main.go -h`, we get all the flags:
 
 1. `go run cmd/web/main.go -cli -story="stories.json"` to use the _CLI_ version where the story file is stored in _stories.json_.
 
-2. `go run cmd/web/main.go -port=8082 -story="stories.json"  -template="templates/index.html"` to use the _default GUI_ version running the server on _port 8082_ where the template file is stored in _templates/index.html_.
+2. `go run cmd/web/main.go -port=8082 -story="stories.json" -template="templates/index.html"` to use the _default GUI_ version running the server on _port 8082_ where the template file is stored in _templates/index.html_.
