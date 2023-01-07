@@ -1,4 +1,4 @@
-# url-shortener
+# choose-your-own-adventure
 
 ## Usage
 
