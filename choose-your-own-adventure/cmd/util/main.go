@@ -45,7 +45,8 @@ func InitializeTemplate(path string) {
 type handler struct {
 	story  Story
 	tmpl   *template.Template
-	pathFn func(r *http.Request) string
+	pathFn func(r *http.Request, arc string) string
+	arc    string
 }
 
 const (
@@ -53,9 +54,8 @@ const (
 	ERR_CHAPTER_NOT_FOUND = "Chapter Not Found"
 )
 
-func DefaultPathFn(r *http.Request) string {
-	path := r.URL.Path
-	key := "intro"
+func DefaultPathFn(r *http.Request, arc string) string {
+	path, key := r.URL.Path, arc
 	if path != "" && path != "/" {
 		key = path[1:]
 	}
@@ -63,7 +63,7 @@ func DefaultPathFn(r *http.Request) string {
 }
 
 func (h handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	key := h.pathFn(r)
+	key := h.pathFn(r, h.arc)
 	if chapter, ok := h.story[key]; ok {
 		err := h.tmpl.Execute(w, chapter)
 		if err != nil {
@@ -84,9 +84,15 @@ func Template(t *template.Template) HandlerOpt {
 	}
 }
 
-func PathFn(f func(r *http.Request) string) HandlerOpt {
+func PathFn(f func(r *http.Request, arc string) string) HandlerOpt {
 	return func(h *handler) {
 		h.pathFn = f
+	}
+}
+
+func Arc(a string) HandlerOpt {
+	return func(h *handler) {
+		h.arc = a
 	}
 }
 

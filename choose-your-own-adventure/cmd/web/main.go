@@ -14,6 +14,7 @@ var (
 	templateFile string
 	port         string
 	useCli       bool
+	arc          string
 )
 
 func init() {
@@ -21,7 +22,7 @@ func init() {
 	flag.StringVar(&templateFile, "template", "templates/index.html", "Path of the template file")
 	flag.StringVar(&port, "port", "8082", "Port on which to run the server")
 	flag.BoolVar(&useCli, "cli", false, "Whether to run the cli version or not")
-
+	flag.StringVar(&arc, "arc", "intro", "The arc from which to start the story")
 }
 
 func checkError(err error) {
@@ -38,7 +39,7 @@ func main() {
 	checkError(err)
 
 	if useCli {
-		chapter := "intro"
+		chapter := arc
 		chapterId := 1
 		for {
 			fmt.Printf("\nCHAPTER #%d: %s\n\n", chapterId, story[chapter].Title)
@@ -64,6 +65,7 @@ func main() {
 			story,
 			util.Template(util.DefaultTemplate),
 			util.PathFn(util.DefaultPathFn),
+			util.Arc(arc),
 		)
 		port = ":" + port
 		fmt.Printf("Starting server on %s\n", port)
