@@ -2,7 +2,7 @@
 
 ## Usage
 
-Using `./url-shortener -h`, we get all the flags:
+Using `./urlshort -h`, we get all the flags:
 
 - json: Path of JSON file
 - port: Port on which the server runs (default "8081")
@@ -10,4 +10,4 @@ Using `./url-shortener -h`, we get all the flags:
 
 ## Example
 
-`./url-shortener -port=8082 -json="mappings/mapping.json"` to run the server on _port 8082_ where the url mapping is stored in _mappings/mapping.json_
+`./urlshort -port=8082 -json="mappings/mapping.json"` to run the server on _port 8082_ where the url mapping is stored in _mappings/mapping.json_
