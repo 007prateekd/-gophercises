@@ -7,7 +7,7 @@ import (
 	"log"
 	"net/http"
 	"time"
-	"url-shortener/handlers"
+	"urlshort/handlers"
 
 	"github.com/boltdb/bolt"
 )
@@ -100,6 +100,7 @@ func main() {
 		handler, err = handlers.JSONHandler([]byte(data), mapHandler)
 		checkError(err)
 	}
-	fmt.Printf("Starting the server on :%s\n", port)
-	http.ListenAndServe(":"+port, handler)
+	port = ":" + port
+	fmt.Printf("Starting the server on %s\n", port)
+	http.ListenAndServe(port, handler)
 }
