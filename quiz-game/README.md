@@ -2,7 +2,7 @@
 
 ## Usage
 
-Using `./quiz-game -h`, we get all the flags:
+Using `./quiz -h`, we get all the flags:
 
 - csv: Name of CSV file (default "problems.csv")
 - limit: Time limit in seconds (default 30)
